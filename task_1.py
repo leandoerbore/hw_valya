@@ -5,11 +5,7 @@ def replace_artifacts(str):
     # Замена '-' и пробелов на '_'
     formattedStr = formattedStr.replace('-', '_').replace(' ', '_')
 
-    # Замена избыточных '_' на один
-    while '__' in formattedStr:
-        formattedStr = formattedStr.replace('__', '_')
-
-    # Удаление начальных цифр
+    # Преобразование CamelCase в snake_case
     newFormattedStr = []
     for char in formattedStr:
         if char.isupper():
@@ -21,21 +17,45 @@ def replace_artifacts(str):
 
     formattedStr = ''.join(newFormattedStr)
 
+    # Замена избыточных '_' на один
+    while '__' in formattedStr:
+        formattedStr = formattedStr.replace('__', '_')
+
+    while True:
+        # Убираем лишние _ (в начале и в конце)
+        if formattedStr[0] == '_':
+            formattedStr = formattedStr[1:]
+        if formattedStr[-1] == '_':
+            formattedStr = formattedStr[:-1]
+            
+        # Удаление начальных цифр
+        while formattedStr and formattedStr[0].isdigit():
+            formattedStr = formattedStr[1:]
+        
+        if (formattedStr[0] != '_' and formattedStr[-1] != '_' and formattedStr[0].isdigit() == False):
+            break
+
+    # Убираем лишние _ (в начале и в конце)
+    if formattedStr[0] == '_':
+        formattedStr = formattedStr[1:]
+    if formattedStr[-1] == '_':
+        formattedStr = formattedStr[:-1]
+
     # Удаление начальных цифр
-    while newFormattedStr and newFormattedStr[0].isdigit():
-        newFormattedStr = newFormattedStr[1:]
+    while formattedStr and formattedStr[0].isdigit():
+        formattedStr = formattedStr[1:]
     
     # Проверка на допустимые символы
-    # if not newFormattedStr.replace('_', '').join('').isalnum():
-    #     return "Введено некорректное имя переменной"
-
+    if not formattedStr.replace('_', '').isalnum():
+        return "Введено некорректное имя переменной"
 
     return formattedStr
 
-# test = '1Python-Qweqw'
+# test = '123123----___-123camselCase-123qweqwe'
+# print(replace_artifacts(test))
+
 user_input = input()
 print(replace_artifacts(user_input))
-# print(replace_artifacts(test))
 
 # Примечание: выполнять данное задание с помощью функций выше необязательно, однако, возможно
 # использование данных функций поможет вам на этапе размышлений о дизайне программы
