@@ -1,61 +1,61 @@
 def replace_artifacts(str):
     # Удаляем пробелы по побокам
-    formattedStr = str.strip()
+    formatted_str = str.strip()
 
     # Замена '-' и пробелов на '_'
-    formattedStr = formattedStr.replace('-', '_').replace(' ', '_')
+    formatted_str = formatted_str.replace('-', '_').replace(' ', '_')
 
     # Преобразование CamelCase в snake_case
-    newFormattedStr = []
-    for char in formattedStr:
+    new_formatted_str = []
+    for char in formatted_str:
         if char.isupper():
-            if newFormattedStr and newFormattedStr[-1] != '_':
-                newFormattedStr.append('_')
-            newFormattedStr.append(char.lower())
+            if new_formatted_str and new_formatted_str[-1] != '_':
+                new_formatted_str.append('_')
+            new_formatted_str.append(char.lower())
         else:
-            newFormattedStr.append(char)
+            new_formatted_str.append(char)
 
-    formattedStr = ''.join(newFormattedStr)
+    formatted_str = ''.join(new_formatted_str)
 
     # Замена избыточных '_' на один
-    while '__' in formattedStr:
-        formattedStr = formattedStr.replace('__', '_')
+    while '__' in formatted_str:
+        formatted_str = formatted_str.replace('__', '_')
 
     while True:
         # Убираем лишние _ (в начале и в конце)
-        if formattedStr[0] == '_':
-            formattedStr = formattedStr[1:]
-        if formattedStr[-1] == '_':
-            formattedStr = formattedStr[:-1]
+        if formatted_str[0] == '_':
+            formatted_str = formatted_str[1:]
+        if formatted_str[-1] == '_':
+            formatted_str = formatted_str[:-1]
             
         # Удаление начальных цифр
-        while formattedStr and formattedStr[0].isdigit():
-            formattedStr = formattedStr[1:]
+        while formatted_str and formatted_str[0].isdigit():
+            formatted_str = formatted_str[1:]
         
-        if (formattedStr[0] != '_' and formattedStr[-1] != '_' and formattedStr[0].isdigit() == False):
+        if (formatted_str[0] != '_' and formatted_str[-1] != '_' and formatted_str[0].isdigit() == False):
             break
 
     # Убираем лишние _ (в начале и в конце)
-    if formattedStr[0] == '_':
-        formattedStr = formattedStr[1:]
-    if formattedStr[-1] == '_':
-        formattedStr = formattedStr[:-1]
+    if formatted_str[0] == '_':
+        formatted_str = formatted_str[1:]
+    if formatted_str[-1] == '_':
+        formatted_str = formatted_str[:-1]
 
     # Удаление начальных цифр
-    while formattedStr and formattedStr[0].isdigit():
-        formattedStr = formattedStr[1:]
+    while formatted_str and formatted_str[0].isdigit():
+        formatted_str = formatted_str[1:]
     
     # Проверка на допустимые символы
-    if not formattedStr.replace('_', '').isalnum():
+    if not formatted_str.replace('_', '').isalnum():
         return "Введено некорректное имя переменной"
 
-    return formattedStr
+    return formatted_str
 
-# test = '123123----___-123camselCase-123qweqwe'
-# print(replace_artifacts(test))
+test = '123123----___-123camselCase-123qweqwe'
+print(replace_artifacts(test))
 
-user_input = input()
-print(replace_artifacts(user_input))
+# user_input = input()
+# print(replace_artifacts(user_input))
 
 # Примечание: выполнять данное задание с помощью функций выше необязательно, однако, возможно
 # использование данных функций поможет вам на этапе размышлений о дизайне программы
