@@ -8,7 +8,6 @@ print(slice1)
 
 # С шагом в 2
 slice2 = companions[1:12:2]
-slice2.insert(4, companions[7])
 print(slice2)
 
 # С шагом в 3 с конца до начала
