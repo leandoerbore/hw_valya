@@ -22,7 +22,7 @@ def main():
     # Для каждого из 3 авантюристов
     for i in range(1, 4):
         while True:
-            print(f"Авантюрист {i}, выберите от 1 до 3 предметов из списка (меч, лук, топор, щит, зелье), разделяя их пробелами:")
+            print(f"Авантюрист {i}, выберите от 1 до 3 предметов из списка (меч, лук, топор, щит, зелье):")
             input_items = input()
             adventurer_items = process_items(input_items)
             if adventurer_items is not None:
