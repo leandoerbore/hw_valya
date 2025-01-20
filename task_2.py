@@ -9,6 +9,8 @@ products = {
 # Список допустимых купюр
 valid_denominations = [10, 50, 100, 500]
 
+# qwe
+
 def print_table():
     # Выводим заголовок таблицы
     print('| {0:<3} | {1:<11} | {2:<4} |'.format('ID', 'ProductName', 'Цена'))
@@ -17,7 +19,7 @@ def print_table():
     for product_id in sorted(products.keys()):
         data = products[product_id]
         print('| {0:<3} | {1:<11} | {2:<4} |'.format(product_id, data['name'], data['price']))
-
+#edit# qwe q
 def read_id(str_):
     if str_ == 'ОТМЕНА':
         return None
@@ -26,6 +28,8 @@ def read_id(str_):
         return None
     else:
         return str_
+    
+# commit 2
 
 def check_bill_validity(str_):
     if str_ == 'ОТМЕНА':
@@ -76,7 +80,7 @@ def main():
         elif denomination is None:
             continue
         else:
-            # 4) Вычисляем оставшуюся сумму
+            # 4) Вычисляем оставшуюся суммуqwe
             remaining_price = calculate_remaining(denomination, remaining_price)
     # Выполнение программы завершается после внесения необходимой суммы
 
@@ -85,6 +89,7 @@ if __name__ == '__main__':
 
 # Примечание: выполнять данное задание с помощью функций выше необязательно, однако, возможно
 # использование данных функций поможет вам на этапе размышлений о дизайне программы
-
+#qwe 
 # Your code here(づ ᴗ _ᴗ)づ♡
+#qwe
 
