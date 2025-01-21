@@ -5,6 +5,7 @@ def process_items(str_):
     # Приводим строку к нижнему регистру и разбиваем на предметы
     selected_items = str_.strip().lower().split()
     # Проверяем, что количество предметов от 1 до 3
+    # Проверяем, что количество предметов от 1 до 3
     if not (1 <= len(selected_items) <= 3):
         print("Вы должны выбрать минимум 1 и максимум 3 предмета.")
         return None
@@ -13,6 +14,7 @@ def process_items(str_):
     if invalid_items:
         print("Неверный предмет, попробуйте снова")
         return None
+    # Возвращаем множество выбранных предметов
     # Возвращаем множество выбранных предметов
     return set(selected_items)
 
@@ -36,6 +38,9 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# Your code here (づ｡◕‿‿◕｡)づ
+# Your code here (づ｡◕‿‿◕｡)づ
 
 # Your code here (づ｡◕‿‿◕｡)づ
 # Your code here (づ｡◕‿‿◕｡)づ
